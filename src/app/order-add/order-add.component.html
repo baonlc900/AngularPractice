@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Thêm mới</h1>
+            </div>
+            <!--Card-->
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="model.formGroup" (ngSubmit)="submitData()">
+                        <div class=" row form-group">
+                            <div class="col-sm-2 col-md-2">
+                                <label for="customerId">Khách hàng</label>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                <select [(ngModel)]="model.customerId" class="form-control" formControlName="customerId" (change)="onChangeCus($event)">
+
+                                    <option selected="selected" disabled [value]="null">Chọn khách hàng</option>
+
+                                    <option *ngFor="let item of customers" [ngValue]="item.id">
+                                        {{ item.name }}</option>
+
+                                </select>
+                            </div>
+                            <div class="col-sm-2 col-md-2">
+                                <label for="customerId">Sản phẩm</label>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                <select [(ngModel)]="model.productId" class="form-control" formControlName="productId" (change)="onChangePro($event)">
+
+                                    <option selected="selected" disabled [value]="null">Chọn sản phẩm</option>
+
+                                    <option *ngFor="let item of products" [ngValue]="item.id">
+                                        {{ item.productName }}</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary mr-1" type="submit"
+                                [disabled]="!(model.formGroup.valid)">Lưu</button>
+                            <button class="btn btn-info" type="button" [routerLink]="['/home/order']"
+                                routerLinkActive="router-link-active">Quay lại</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
+            <!--/End card-->
+        </main>
+    </div>
+</div>

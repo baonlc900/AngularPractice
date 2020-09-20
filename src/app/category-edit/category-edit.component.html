@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Cập nhật</h1>
+            </div>
+            <!--Card-->
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="model.formGroup" (ngSubmit)="submitData()">
+                        <div class=" row form-group">
+                            <div class="col-sm-2 col-md-2">
+                                <label for="productName">Product Name</label>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                <input type="text" [(ngModel)]="model.productName" formControlName="productName">
+                            </div>
+
+                            <div [hidden]="!(model.formGroup.controls['productName'].hasError('required'))">Tên danh mục không được
+                                để trống</div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-sm-2 col-md-2">
+                                <label for="price">Price</label>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                <input type="text" [(ngModel)]="model.price" formControlName="price" />
+                            </div>
+
+                            <div [hidden]="!(model.formGroup.controls['price'].hasError('required'))">Tên giá không được
+                                để trống</div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-sm-2 col-md-2">
+                                <label for="amount">Quality</label>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                <input type="text" [(ngModel)]="model.amount" formControlName="amount" />
+                            </div>
+
+                            <div [hidden]="!(model.formGroup.controls['amount'].hasError('required'))">Tên số lượng
+                                không được để trống</div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary mr-1" type="submit"
+                                [disabled]="!(model.formGroup.valid)">Lưu</button>
+                            <button class="btn btn-info" type="button" [routerLink]="['/home/category']"
+                                routerLinkActive="router-link-active">Quay lại</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    
+                </div>
+            </div>
+            <!--/End card-->
+        </main>
+    </div>
+</div>
+
+
+
+<!-- <a [routerLink]="['/home/category']" routerLinkActive="router-link-active">Về lại danh sách</a>
+<form [formGroup]="model.formGroup" (ngSubmit)="submitData()">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input type="text" [(ngModel)]="model.productName" formControlName="productName">
+                <div [hidden]="!(model.formGroup.controls['productName'].hasError('required'))">Tên danh mục không được
+                    để trống</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="btn btn-primary" type="submit" [disabled]="!(model.formGroup.valid)">Lưu</button>
+            </td>
+        </tr>
+    </table>
+</form> -->
