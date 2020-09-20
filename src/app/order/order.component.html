@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row">      
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Order</h1>
+            </div>
+            <!--Card-->
+            <div class="row">
+                <div><button [routerLink]="['/home/order-add']" routerLinkActive="router-link-active" class="btn btn-primary" type="button" value="send">Thêm mới</button></div>
+            </div>
+            <div class="row">
+
+            </div>
+            <div class="row mt-3">
+                <table class="table table-striped change-color">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%" scope="col">Order Id</th>
+                            <th style="width: 30%" scope="col">Tên sản phẩm</th>
+                            <th style="width: 28%" scope="col">Tên khách hàng</th>
+                            <th style="width: 20%" scope="col">Thời gian order</th>
+                            <th style="width: 10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="total == 0">
+                        <tr>
+                            <td colspan="3">Chưa có danh mục nào</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="total > 0">
+                        <tr *ngFor="let item of categories">
+                            <td>{{item.id}}</td>
+                            <td>{{item.productName}}</td>
+                            <td>{{item.customerName}}</td>
+                            <td>{{item.createdAt | date: 'dd/MM/yyyy'}}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm mr-1 " [routerLink]="['/home/order-edit/'+item.id]" routerLinkActive="router-link-active"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm" (click)="delete(item.id)" href="javascript:;"><i class="fas fa-trash"></i></button>
+                                <!-- <a [routerLink]="['/category-edit/'+item.id]" routerLinkActive="router-link-active" class="btn btn-sm btn-danger btnEdit">
+                                    <i class="fas fa-edit"></i>
+                                </a> -->
+                                <!-- <a (click)="delete(item.id)" href="javascript:;" class="btn btn-sm btn-warning btnRemove">
+                                    <i class="fas fa-trash"></i>
+                                </a> -->
+                                
+                            </td>
+                            <!-- <td>
+                                
+                            </td> -->
+                        </tr>
+ 
+                    </tbody>
+                </table>
+            </div>
+            <!--/End card-->
+        </main>
+    </div>
+</div>
